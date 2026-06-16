@@ -1,5 +1,5 @@
 CC = gcc
-FLAGS = -Wall -Wextra -pedantic -g
+FLAGS = -Wall -Wextra -pedantic -g -Iinclude
 
 build: | build_dir
 	$(CC) $(FLAGS) src/*.c -o build/server
