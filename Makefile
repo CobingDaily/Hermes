@@ -5,7 +5,7 @@ build: | build_dir
 	$(CC) $(FLAGS) src/*.c -o build/server
 
 run: build
-	./build/server 8080
+	./build/server 6767
 
 build_dir:
 	mkdir -p build
