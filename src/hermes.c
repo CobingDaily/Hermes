@@ -6,12 +6,16 @@
 #include <errno.h>
 #include <string.h>
 
+#include <sys/socket.h>
+#include <sys/types.h>
+#include <netinet/in.h>
+
 #include "hermes.h"
 
 
 #define DEFAULT_PORT 8080
 
-void HMZ_Extract_port(int argc, char** argv, uint32_t* port) {
+void HMS_Extract_port(int argc, char** argv, uint16_t* port) {
     if (argc == 1) {
         *port = DEFAULT_PORT;
     }
@@ -29,3 +33,18 @@ void HMZ_Extract_port(int argc, char** argv, uint32_t* port) {
     return;
 }
 
+void HMS_Init_server(int* serverSocket, uint16_t* port) {
+    *serverSocket = socket(PF_INET, SOCK_STREAM, 0);
+
+    struct sockaddr_in addr = {
+        .sin_family = PF_INET,
+        .sin_port = htons(*port),
+        .sin_addr.s_addr = INADDR_ANY,
+    };
+
+    bind(*serverSocket, (struct sockaddr *)&addr, sizeof(addr));
+
+    listen(*serverSocket, 10);
+
+    return;
+}

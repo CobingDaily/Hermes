@@ -1,7 +1,10 @@
-#ifndef VALIDATION_H
+#ifndef HERMES_H
+#define HERMES_H
 
 #include <stdint.h>
 
-void HMZ_Extract_port(int argc, char** argv, uint32_t* port);
+void HMS_Extract_port(int argc, char** argv, uint16_t* port);
 
-#endif // !VALIDATION_H
+void HMS_Init_server(int* serverSocket, uint16_t* port);
+
+#endif // !HERMES_H
