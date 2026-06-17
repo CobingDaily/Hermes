@@ -6,7 +6,7 @@
 #include <errno.h>
 #include <string.h>
 
-#include "hermez.h"
+#include "hermes.h"
 
 
 #define DEFAULT_PORT 8080
