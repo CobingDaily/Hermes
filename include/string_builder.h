@@ -10,10 +10,12 @@ typedef struct {
 
 String_Builder* SB_make(char *init);
 
-/** Non-persistent append.
+int SB_append(String_Builder* sb, char* more);
+
+/** Non-persistent concat.
  * `left` becomes the final result.
  */
-int SB_append(String_Builder* left,
+int SB_concat(String_Builder* left,
               String_Builder* right);
 
 
