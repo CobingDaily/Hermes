@@ -12,6 +12,7 @@
 
 #include "hermes.h"
 #include "html.h"
+#include "string_builder.h"
 
 
 int main(int argc, char** argv) {
@@ -23,6 +24,15 @@ int main(int argc, char** argv) {
 
     struct sockaddr_in clientAddr;
     socklen_t clientLen = sizeof(clientAddr);
+
+    String_Builder *hello = SB_make("Hello\n");
+
+    SB_append(hello, "World\n");
+    SB_append(hello, "World\n");
+    SB_append(hello, "World\n");
+    SB_append(hello, "World\n");
+
+
 
     while (true) {
         int clientSocket = accept(serverSocket, (struct sockaddr *)&clientAddr, &clientLen);

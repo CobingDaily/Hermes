@@ -27,19 +27,16 @@ int SB_append(String_Builder* sb, char* more) {
     size_t add = strlen(more);
     size_t length = sb->length + add;
 
-    char* old_text;
-    strcpy(old_text, sb->text);
+    char *new_text = realloc(sb->text, length + 1);
 
-    sb->text = realloc(sb->text, length + 1);
-
-    if (!sb->text) {
-        free(sb);
+    if (!new_text) {
         return 1;
     }
 
+    sb->length = length;
+    sb->text = new_text;
     memcpy(sb->text + sb->length, more, add + 1);
 
-    sb->length = length;
     return 0;
 }
 
